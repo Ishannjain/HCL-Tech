@@ -104,15 +104,52 @@ def render_reply(result):
     with st.expander('How this was calculated' if refund else 'Answer details'):
         st.caption(f"Answer type: {result['answer_type']} · Trace: {result['trace_id']}")
         st.json(result)
+url=os.getenv('RETAIL_API_URL','http://127.0.0.1:8000')
+if 'login_session' not in st.session_state:
+    st.subheader('Welcome back')
+    st.write('Sign in to get help with your orders and returns.')
+    with st.form('customer_login',clear_on_submit=True):
+        username=st.text_input('Username',placeholder='customer1 or customer2')
+        password=st.text_input('Password',type='password')
+        submitted=st.form_submit_button('Sign in',use_container_width=True)
+    if submitted:
+        try:
+            response=httpx.post(url+'/auth/login',json={'username':username,'password':password},timeout=15)
+            if response.status_code==401:st.error('Incorrect username or password. Please try again.')
+            else:
+                response.raise_for_status()
+                st.session_state.login_session=response.json()
+                st.session_state.messages=[]
+                st.rerun()
+        except httpx.HTTPError:st.error('Sign-in service is unavailable. Please try again shortly.')
+    with st.expander('Demo accounts'):
+        st.caption('These are fictional hackathon accounts, not real customer credentials.')
+        st.markdown('**Customer 1** · `C1001`  \nUsername: `customer1`  \nPassword: `Customer1@123`')
+        st.markdown('**Customer 2** · `C1002`  \nUsername: `customer2`  \nPassword: `Customer2@123`')
+    st.stop()
+session=st.session_state.login_session
+customer=session['customer_id']
+try:
+    session_check=httpx.get(url+'/auth/me',headers={'Authorization':'Bearer '+session['access_token']},timeout=10)
+    if session_check.status_code==401:
+        st.session_state.clear();st.rerun()
+    session_check.raise_for_status()
+except httpx.HTTPError:
+    st.error('Your account service is unavailable. Please try again shortly.');st.stop()
 with st.sidebar:
-    st.subheader('Request context')
-    url=st.text_input('API URL',os.getenv('RETAIL_API_URL','http://127.0.0.1:8000'))
-    customer=st.text_input('Customer ID','C1001',help='Trusted demo identity header. Production requires an authenticated gateway.')
+    st.subheader('Your account')
+    st.write(session['full_name'])
+    st.caption(f"{customer} · {session['tier'].title()} member")
+    if st.button('Sign out',use_container_width=True):
+        try:httpx.post(url+'/auth/logout',headers={'Authorization':'Bearer '+session['access_token']},timeout=10).raise_for_status()
+        except httpx.HTTPError:pass
+        st.session_state.clear();st.rerun()
     as_of=st.date_input('As-of date',date(2026,10,10))
     if st.button('Check service'):
         try:st.json(httpx.get(url.rstrip('/')+'/health',timeout=10).json())
         except httpx.HTTPError:st.error('API is unavailable. Start the API server first.')
-    st.caption('Try: What is the return window for laptops? Or: How much refund for defective item O-100051 SKU-0001?')
+    example_order='O-100051' if customer=='C1001' else 'O-100058'
+    st.caption(f'Try: How much refund for defective item {example_order} SKU-0001?')
     if st.button('Clear conversation'):st.session_state.messages=[]
 if 'messages' not in st.session_state:st.session_state.messages=[]
 for message in st.session_state.messages:
@@ -125,7 +162,7 @@ if question:
     with st.chat_message('user'):st.write(question)
     with st.chat_message('assistant'):
         try:
-            with st.spinner('Checking sources and authorised records…'):result=ask_api(url,question,customer,as_of)
+            with st.spinner('Checking sources and authorised records…'):result=ask_api(url,question,customer,as_of,session['access_token'])
             render_reply(result)
             st.session_state.messages.append({'role':'assistant','text':result['answer'],'result':result})
         except httpx.HTTPError as exc:

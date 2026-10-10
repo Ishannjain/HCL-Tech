@@ -2,7 +2,8 @@ import json
 import secrets
 from contextlib import asynccontextmanager
 from fastapi import FastAPI,Header,HTTPException,UploadFile,File,Form,Depends
-from pydantic import ValidationError
+from pydantic import ValidationError,BaseModel,Field,ConfigDict
+from app.security.login import init_login,login,logout,session_identity,request_identity
 from app.config import get_settings
 from app.database import connect,init_db,active_sources
 from app.schemas.request import AskRequest,ReturnRequest,today
@@ -18,9 +19,28 @@ from app.rules.precedence import RuleMissing,RuleConflict
 @asynccontextmanager
 async def lifespan(app):
     init_db()
+    init_login()
     yield
 
 app=FastAPI(title='Retail Support Agent',version='1.0.0',lifespan=lifespan)
+
+class LoginRequest(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    username:str=Field(min_length=1,max_length=64)
+    password:str=Field(min_length=1,max_length=128)
+
+@app.post('/auth/login')
+def login_route(body:LoginRequest):
+    return login(body.username,body.password)
+
+@app.post('/auth/logout')
+def logout_route(authorization:str|None=Header(default=None)):
+    logout(authorization)
+    return {'status':'signed_out'}
+
+@app.get('/auth/me')
+def me_route(authorization:str|None=Header(default=None)):
+    return {'customer_id':session_identity(authorization)}
 
 def require_admin(x_admin_key:str|None=Header(default=None)):
     key=get_settings().admin_api_key
@@ -28,7 +48,8 @@ def require_admin(x_admin_key:str|None=Header(default=None)):
         raise HTTPException(403,'Admin authorization required')
 
 @app.post('/ask',response_model=AskResponse)
-def ask_route(body:AskRequest,x_customer_id:str|None=Header(default=None)):
+def ask_route(body:AskRequest,x_customer_id:str|None=Header(default=None),authorization:str|None=Header(default=None)):
+    x_customer_id=request_identity(x_customer_id,authorization)
     try:return ask(body,x_customer_id)
     except Exception as exc:
         # A dependency failure is not an evidence-based not_found answer.
@@ -50,7 +71,8 @@ def sources_route():
     with connect() as db:return list(active_sources(db).values())
 
 @app.get('/audit/{trace_id}')
-def audit_route(trace_id:str,x_customer_id:str|None=Header(default=None),x_admin_key:str|None=Header(default=None)):
+def audit_route(trace_id:str,x_customer_id:str|None=Header(default=None),x_admin_key:str|None=Header(default=None),authorization:str|None=Header(default=None)):
+    x_customer_id=request_identity(x_customer_id,authorization)
     settings=get_settings()
     admin=bool(settings.admin_api_key and x_admin_key and secrets.compare_digest(settings.admin_api_key,x_admin_key))
     with connect() as db:
@@ -80,7 +102,8 @@ def health_route():
     return state
 
 @app.post('/returns')
-def return_route(body:ReturnRequest,x_customer_id:str|None=Header(default=None)):
+def return_route(body:ReturnRequest,x_customer_id:str|None=Header(default=None),authorization:str|None=Header(default=None)):
+    x_customer_id=request_identity(x_customer_id,authorization)
     try:
         with connect() as db:
             ctx=ToolContext(db,x_customer_id,today())

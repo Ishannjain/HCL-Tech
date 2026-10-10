@@ -41,7 +41,13 @@ In a second terminal:
 
 Open http://127.0.0.1:8501. API docs are at http://127.0.0.1:8000/docs. The first Chroma bootstrap downloads the sentence-transformers embedding model; it never downloads a local language model. Later restarts reuse the persisted index. `RETRIEVAL_BACKEND=keyword` is an explicitly labeled lightweight test mode and does not satisfy the mandatory Chroma stack by itself.
 
-## Docker
+## Demo customer login
+
+The chatbot opens with a sign-in form. Use `customer1` / `Customer1@123` for C1001, or `customer2` / `Customer2@123` for C1002. These deliberately public, fictional demo credentials are not production accounts. The signed-in customer is fixed; signing out revokes the session and clears the conversation and account state. Passwords are stored as salted scrypt hashes, and server-side bearer sessions expire after eight hours. No passwords or tokens are logged by the application.
+
+`POST /auth/login`, `GET /auth/me` and `POST /auth/logout` support this UI flow. When a bearer session is supplied, `/ask`, `/audit` and `/returns` reject a mismatching customer header. The use-case's direct `X-Customer-Id` contract remains available for trusted judge clients. This localhost demo is not a production authentication gateway; a deployment must enforce authentication for those direct API clients and replace public demo credentials.
+
+## Docker startup
 
 On Windows, run `./Start-Docker.ps1` from the project folder. It finds Docker's installed CLI, starts Desktop, and waits for the API and UI to become healthy. Stop any manually started API/UI servers before using the same ports in Docker.
 
