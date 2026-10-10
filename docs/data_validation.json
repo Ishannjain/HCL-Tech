@@ -1,0 +1,10 @@
+{
+  "counts": {
+    "customers": 30,
+    "products": 20,
+    "orders": 60,
+    "order_items": 60,
+    "returns": 9
+  },
+  "violations": []
+}

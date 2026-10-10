@@ -1,0 +1,77 @@
+{
+  "as_of_date": "2026-10-10",
+  "fixtures": [
+    {
+      "case": "last_return_day",
+      "order_id": "O-100051",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "one_day_late",
+      "order_id": "O-100052",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "repeat_purchase_1",
+      "order_id": "O-100053",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "repeat_purchase_2",
+      "order_id": "O-100054",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "warranty_just_expired",
+      "order_id": "O-100055",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "above_approval_limit",
+      "order_id": "O-100057",
+      "sku": "SKU-0004",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "discounted_item",
+      "order_id": "O-100058",
+      "sku": "SKU-0001",
+      "customer_id": "C1002"
+    },
+    {
+      "case": "non_returnable_category",
+      "order_id": "O-100059",
+      "sku": "SKU-0013",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "undelivered",
+      "order_id": "O-100060",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "instruction_like_delivery_note",
+      "order_id": "O-100048",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "existing_return",
+      "order_id": "O-100050",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    },
+    {
+      "case": "valid_warranty",
+      "order_id": "O-100051",
+      "sku": "SKU-0001",
+      "customer_id": "C1001"
+    }
+  ]
+}

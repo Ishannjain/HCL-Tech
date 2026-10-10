@@ -1,0 +1,32 @@
+[
+  {
+    "top_k": 2,
+    "metrics": {
+      "answer_contract_correctness": 0.9643,
+      "citation_expected_reference_match": 0.9286,
+      "abstention_accuracy": 0.9643,
+      "tool_result_correctness": 1.0,
+      "retrieval_hit_rate": 0.7857,
+      "p50_latency_ms": 32.14,
+      "p95_latency_ms": 47.02,
+      "llm_calls_per_question": 0.0,
+      "tokens_per_question": 0.0
+    },
+    "mode": "MOCK_LLM; no real-model quality claim"
+  },
+  {
+    "top_k": 8,
+    "metrics": {
+      "answer_contract_correctness": 1.0,
+      "citation_expected_reference_match": 1.0,
+      "abstention_accuracy": 1.0,
+      "tool_result_correctness": 1.0,
+      "retrieval_hit_rate": 0.8571,
+      "p50_latency_ms": 29.82,
+      "p95_latency_ms": 34.13,
+      "llm_calls_per_question": 0.0,
+      "tokens_per_question": 0.0
+    },
+    "mode": "MOCK_LLM; no real-model quality claim"
+  }
+]

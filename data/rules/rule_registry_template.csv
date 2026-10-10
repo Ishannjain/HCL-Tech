@@ -1,0 +1,2 @@
+rule_id,retailer,topic,condition,action,source_url,source_section,exact_source_clause,effective_date,retrieved_at,verification_status,notes
+RULE-001,Croma,replace_with_topic,copy the exact applicable condition from the source,record the action the source explicitly permits/requires,paste the exact official URL,paste the visible heading,paste the exact relevant clause,,YYYY-MM-DD,needs_review,"Do not invent missing timelines, eligibility rules, or exceptions."

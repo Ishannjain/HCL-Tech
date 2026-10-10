@@ -1,0 +1,7 @@
+doc_id,title,issuer,authority_level,doc_type,version,effective_from,effective_to,supersedes,scope_categories,scope_tiers,provenance,retrieved_on,synthetic
+CROMA-RETURN-SNAPSHOT,Croma Cancellation and Returns,Croma / Infiniti Retail Limited,1,regulation,snapshot-2026-10-10,2026-10-10,,,ALL,ALL,https://www.croma.com/cancellation-and-return,2026-10-10,N
+CROMA-FAQ-SNAPSHOT,Croma FAQs,Croma / Infiniti Retail Limited,4,faq,snapshot-2026-10-10,2026-10-10,,,ALL,ALL,https://www.croma.com/faq,2026-10-10,N
+CROMA-TERMS-SNAPSHOT,Croma Terms of Use,Croma / Infiniti Retail Limited,1,regulation,snapshot-2026-10-10,2026-10-10,,,ALL,ALL,https://www.croma.com/terms-of-use,2026-10-10,N
+DEMO-OPS,Synthetic hackathon operational policy,Hackathon test fixtures (not Croma),1,regulation,1.0-demo,2026-10-10,,,ALL,ALL,Synthetic local fixture: demo_operations.md,2026-10-10,Y
+DEMO-CIRCULAR,Synthetic AUDIO amendment,Hackathon test fixtures (not Croma),2,circular,1.0-demo,2026-10-10,,CROMA-RETURN-SNAPSHOT#Return replacement applicable window,AUDIO,ALL,Synthetic local fixture: demo_circular.md,2026-10-10,Y
+DEMO-FAQ,Synthetic outdated FAQ,Hackathon test fixtures (not Croma),4,faq,1.0-demo,2026-10-10,,,AUDIO,ALL,Synthetic local fixture: demo_faq.md,2026-10-10,Y

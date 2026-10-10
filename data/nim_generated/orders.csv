@@ -1,0 +1,61 @@
+order_id,customer_id,order_date,status,payment_method,delivery_note
+O-000001,C0001,2026-09-01,DELIVERED,UPI,Left at doorstep with security
+O-000002,C0002,2026-09-02,SHIPPED,CARD,Out for delivery today
+O-000003,C0003,2026-09-03,PLACED,COD,Awaiting warehouse dispatch
+O-000004,C0004,2026-09-04,CANCELLED,UPI,Order cancelled by customer
+O-000005,C0005,2026-09-05,DELIVERED,CARD,Handed to resident
+O-000006,C0006,2026-09-06,SHIPPED,UPI,In transit to local hub
+O-000007,C0007,2026-09-07,PLACED,COD,Payment pending verification
+O-000008,C0008,2026-09-08,DELIVERED,CARD,Received with signature
+O-000009,C0009,2026-09-09,SHIPPED,UPI,Dispatched from warehouse
+O-000010,C0010,2026-09-10,PLACED,COD,"Order confirmed, processing"
+O-000011,C0011,2026-09-11,DELIVERED,UPI,Left with building manager
+O-000012,C0012,2026-09-12,SHIPPED,CARD,En route to delivery agent
+O-000013,C0013,2026-09-13,PLACED,COD,Awaiting stock allocation
+O-000014,C0014,2026-09-14,CANCELLED,UPI,"Payment failed, order voided"
+O-000015,C0015,2026-09-15,DELIVERED,CARD,Delivered to office reception
+O-000016,C0016,2026-09-16,SHIPPED,UPI,Scan at origin facility
+O-000017,C0017,2026-09-17,PLACED,COD,"Order received, pending pick"
+O-000018,C0018,2026-09-18,DELIVERED,CARD,Customer signed for package
+O-000019,C0019,2026-09-19,SHIPPED,UPI,Loaded onto delivery vehicle
+O-000020,C0020,2026-09-20,PLACED,COD,Waiting for payment confirmation
+O-000021,C0021,2026-09-21,DELIVERED,UPI,Left in secure locker
+O-000022,C0022,2026-09-22,SHIPPED,CARD,Sorting at regional center
+O-000023,C0023,2026-09-23,PLACED,COD,Order entered system
+O-000024,C0024,2026-09-24,DELIVERED,UPI,Handed over at gate
+O-000025,C0025,2026-09-25,SHIPPED,CARD,In last-mile delivery
+O-000026,C0026,2026-09-26,PLACED,COD,Awaiting fulfillment
+O-000027,C0027,2026-09-27,CANCELLED,UPI,"Duplicate order, cancelled"
+O-000028,C0028,2026-09-28,DELIVERED,CARD,Received with ID verification
+O-000029,C0029,2026-09-29,SHIPPED,UPI,"Out for delivery, ETA today"
+O-000030,C0030,2026-09-30,PLACED,COD,"Order confirmed, picking"
+O-000031,C0001,2026-10-01,DELIVERED,CARD,Left with neighbor
+O-000032,C0002,2026-10-02,SHIPPED,UPI,"Dispatched, tracking active"
+O-000033,C0003,2026-10-03,PLACED,COD,Payment under review
+O-000034,C0004,2026-10-04,DELIVERED,UPI,Delivered to security desk
+O-000035,C0005,2026-10-05,SHIPPED,CARD,"En route, delay due to weather"
+O-000036,C0006,2026-10-06,PLACED,COD,"Order received, processing"
+O-000037,C0007,2026-10-07,CANCELLED,UPI,Customer changed mind
+O-000038,C0008,2026-10-08,DELIVERED,CARD,Received in good condition
+O-000039,C0009,2026-10-09,SHIPPED,UPI,Scan at destination hub
+O-000040,C0010,2026-10-10,PLACED,COD,"As-of date order, pending"
+O-000041,C0011,2026-08-01,DELIVERED,UPI,Left at doorstep
+O-000042,C0012,2026-08-02,SHIPPED,CARD,Out for delivery
+O-000043,C0013,2026-08-03,PLACED,COD,Awaiting warehouse
+O-000044,C0014,2026-08-04,DELIVERED,UPI,Handed to resident
+O-000045,C0015,2026-08-05,SHIPPED,CARD,In transit
+O-000046,C0016,2026-08-06,PLACED,COD,Payment pending
+O-000047,C0017,2026-08-07,DELIVERED,UPI,Received with signature
+O-000048,C0018,2026-08-08,SHIPPED,CARD,Dispatched from warehouse
+O-000049,C0019,2026-08-09,PLACED,COD,Order confirmed
+O-000050,C0020,2026-08-10,CANCELLED,UPI,Payment failed
+O-000051,C0021,2026-07-01,DELIVERED,CARD,Delivered to office
+O-000052,C0022,2026-07-02,SHIPPED,UPI,Scan at origin
+O-000053,C0023,2026-07-03,PLACED,COD,Order received
+O-000054,C0024,2026-07-04,DELIVERED,UPI,Left in locker
+O-000055,C0025,2026-07-05,SHIPPED,CARD,Sorting at center
+O-000056,C0026,2026-07-06,PLACED,COD,Awaiting fulfillment
+O-000057,C0027,2026-07-07,DELIVERED,UPI,Handed over at gate
+O-000058,C0028,2026-07-08,SHIPPED,CARD,In last-mile
+O-000059,C0029,2026-07-09,PLACED,COD,Order entered system
+O-000060,C0030,2026-07-10,DELIVERED,UPI,Received with ID verification

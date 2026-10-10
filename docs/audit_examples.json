@@ -1,0 +1,190 @@
+[
+  {
+    "trace_id": "0b7546ad8f72451584022a9335011b58",
+    "timestamp": "2026-10-10T09:17:41.332753+00:00",
+    "customer_id": null,
+    "question_category": "policy",
+    "question_redacted": "[Question text omitted; intent and tool identifiers retained]",
+    "sources_retrieved": [
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Category return policy",
+        "page": 1,
+        "score": 1.0
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Croma Replacement Policy",
+        "page": 1,
+        "score": 0.6667
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Croma Replacement Policy",
+        "page": 1,
+        "score": 0.6667
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Croma Replacement Policy",
+        "page": 1,
+        "score": 0.6667
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Return replacement applicable window",
+        "page": 1,
+        "score": 0.6667
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Category return policy",
+        "page": 1,
+        "score": 0.6667
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Category return policy",
+        "page": 1,
+        "score": 0.6667
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Category return policy",
+        "page": 1,
+        "score": 0.6667
+      }
+    ],
+    "precedence_decisions": [],
+    "tools_invoked": [],
+    "applied_rules": [
+      {
+        "rule_id": "CROMA-WINDOW-LAPTOP",
+        "parameter": "return_window_days",
+        "value": "7",
+        "source_doc_id": "CROMA-RETURN-SNAPSHOT"
+      }
+    ],
+    "answer_type": "retrieved_fact",
+    "model": "MOCK_LLM-extractive",
+    "llm_calls": 0,
+    "tokens": 0,
+    "latency_ms": 34.22,
+    "provider_errors": [],
+    "mock_llm": true,
+    "as_of_date": "2026-10-10"
+  },
+  {
+    "trace_id": "c428d276ee5047d0a6211eec29cb5753",
+    "timestamp": "2026-10-10T09:17:41.493707+00:00",
+    "customer_id": null,
+    "question_category": "policy",
+    "question_redacted": "[Question text omitted; intent and tool identifiers retained]",
+    "sources_retrieved": [],
+    "precedence_decisions": [],
+    "tools_invoked": [],
+    "applied_rules": [],
+    "answer_type": "not_found",
+    "model": "MOCK_LLM-extractive",
+    "llm_calls": 0,
+    "tokens": 0,
+    "latency_ms": 9.02,
+    "provider_errors": [],
+    "mock_llm": true,
+    "as_of_date": "2026-10-09"
+  },
+  {
+    "trace_id": "9f4373d06122455f821a30dc5748fc1d",
+    "timestamp": "2026-10-10T09:17:41.663152+00:00",
+    "customer_id": "C1001",
+    "question_category": "order",
+    "question_redacted": "[Question text omitted; intent and tool identifiers retained]",
+    "sources_retrieved": [
+      {
+        "doc_id": "CROMA-FAQ-SNAPSHOT",
+        "section": "Frequently asked questions",
+        "page": 1,
+        "score": 1.0
+      },
+      {
+        "doc_id": "CROMA-FAQ-SNAPSHOT",
+        "section": "Frequently asked questions",
+        "page": 1,
+        "score": 1.0
+      },
+      {
+        "doc_id": "CROMA-TERMS-SNAPSHOT",
+        "section": "Terms and conditions",
+        "page": 1,
+        "score": 1.0
+      },
+      {
+        "doc_id": "CROMA-TERMS-SNAPSHOT",
+        "section": "Terms and conditions",
+        "page": 1,
+        "score": 1.0
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Croma Replacement Policy",
+        "page": 1,
+        "score": 0.5
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Croma Replacement Policy",
+        "page": 1,
+        "score": 0.5
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Category return policy",
+        "page": 1,
+        "score": 0.5
+      },
+      {
+        "doc_id": "CROMA-RETURN-SNAPSHOT",
+        "section": "Category return policy",
+        "page": 1,
+        "score": 0.5
+      }
+    ],
+    "precedence_decisions": [],
+    "tools_invoked": [
+      {
+        "tool": "lookup_order",
+        "input": {
+          "order_id": "O-100051"
+        },
+        "output": {
+          "order_id": "O-100051",
+          "customer_id": "C1001",
+          "order_date": "2026-09-30",
+          "status": "DELIVERED",
+          "payment_method": "COD",
+          "items": [
+            {
+              "order_id": "O-100051",
+              "sku": "SKU-0001",
+              "qty": 1,
+              "net_unit_price": 2636.0,
+              "delivered_on": "2026-10-03",
+              "name": "NovaBook 14",
+              "category": "LAPTOP"
+            }
+          ]
+        },
+        "ms": 0.92
+      }
+    ],
+    "applied_rules": [],
+    "answer_type": "calculated",
+    "model": "MOCK_LLM-extractive",
+    "llm_calls": 0,
+    "tokens": 0,
+    "latency_ms": 28.33,
+    "provider_errors": [],
+    "mock_llm": true,
+    "as_of_date": "2026-10-10"
+  }
+]
